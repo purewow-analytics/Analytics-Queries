@@ -1,10 +1,10 @@
 /*To find a list of Email User IDs of people who have not been on the website this month but have opened an Email*/
 SELECT
-  (DISTINCT(b.visitor_id))
+  DISTINCT(b.visitor_id)
 FROM
   -- selects users this month
   (SELECT DISTINCT(user_id) FROM javascript.pages
-  WHERE sent_at >= date_trunc('month', current_date) a
+  WHERE sent_at >= date_trunc('month', current_date)) a
 RIGHT JOIN
   -- selects active subscribers
   (SELECT visitor_id FROM public.visitor
