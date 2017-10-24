@@ -1,0 +1,4 @@
+select regexp_substr(url, 'https://www.*/') as url, sum(case when name is not null then 1 else 0 end) as total 
+from javascript.pages
+group by regexp_substr(url, 'https://www.*/')
+order by total desc
