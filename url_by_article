@@ -1,0 +1,4 @@
+select substring(url, 0, strpos(url + '?', '?')) as url, sum(case when name is not null then 1 else 0 end) as total 
+from javascript.pages
+group by substring(url, 0, strpos(url + '?', '?'))
+order by total desc
